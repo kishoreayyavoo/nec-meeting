@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NEC Online Meeting Portal</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("99.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f2f2f2;
+      }
+
+      .form-container {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .form-content {
+        background-color: rgba(255, 255, 255, 0.46);
+        /* Very light white */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .form-content img {
+        display: block;
+        margin: 0 auto 20px;
+        /* Center the image and add space below */
+        width: 100px;
+        /* Adjust based on the image size */
+        height: auto;
+        /* Maintain aspect ratio */
+      }
+
+      form input,
+      form button {
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+      }
+
+      form button {
+        background-color: #1acabb;
+        color: white;
+        cursor: pointer;
+      }
+
+      form button:hover {
+        background-color: #5e63bd;
+      }
+
+      .error {
+        color: red;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="form-container">
+      <div class="form-content">
+        <img src="NEC LOGO FINAL.png" alt="NEC Logo" />
+        <form action="auth.php" method="POST">
+          <h1>Login</h1>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email ID"
+            required
+            name="email"
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+            name="pass"
+          />
+          <button type="submit">Login</button>
+          <p id="error-message" class="error"></p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function validation() {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
+
+        // Simple validation
+        if (!email || !password) {
+          errorMessage.textContent = "Both fields are required.";
+          return;
+        }
+
+        // Example validation (e.g., basic email format check)
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          errorMessage.textContent = "Invalid email format.";
+          return;
+        }
+
+        if (password.length < 6) {
+          errorMessage.textContent =
+            "Password must be at least 6 characters long.";
+          return;
+        }
+      }
+    </script>
+  </body>
+</html>
